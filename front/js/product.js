@@ -1,5 +1,5 @@
-const url = location.search;
-let id = url.replace("?id=", "");
+let params = new URLSearchParams(location.search);
+let id = params.get("id");
 
 fetch("http://localhost:3000/api/products/" + id)
   .then((res) => {
@@ -23,13 +23,28 @@ fetch("http://localhost:3000/api/products/" + id)
     const description = document.getElementById("description");
     description.innerText = products.description;
 
-    for (let i = 0; i < products.colors.length; i++) {
+    products.colors.forEach((colors) => {
       const colorsLocation = document.getElementById("colors");
       const option = document.createElement("option");
 
-      option.value = products.colors[i];
-      option.innerText = products.colors[i];
+      option.value = colors;
+      option.innerText = colors;
 
       colorsLocation.appendChild(option);
-    }
+    });
+
+    const title = document.querySelector("title");
+    title.innerText = products.name;
   });
+
+const addToCart = document.getElementById("addToCart");
+
+addToCart.addEventListener("click", () => {
+  const color = document.getElementById("colors").value;
+  const quantity = document.getElementById("quantity").value;
+
+  localStorage.setItem(
+    JSON.stringify({ id: id, color: color }),
+    JSON.stringify(new Number(quantity))
+  );
+});
