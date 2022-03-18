@@ -43,8 +43,14 @@ addToCart.addEventListener("click", () => {
   const color = document.getElementById("colors").value;
   const quantity = document.getElementById("quantity").value;
 
-  localStorage.setItem(
-    JSON.stringify({ id: id, color: color }),
-    JSON.stringify(new Number(quantity))
-  );
+  if (quantity > 0 && quantity < 101) {
+    localStorage.setItem(
+      JSON.stringify({ id: id, color: color }),
+      JSON.stringify(new Number(quantity))
+    );
+  } else {
+    alert(
+      "Veuillez sélectionner une quantité comprise entre 1 et 100 avant d'ajouter cet article à votre panier !"
+    );
+  }
 });
