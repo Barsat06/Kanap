@@ -46,7 +46,7 @@ addToCart.addEventListener("click", () => {
   if (quantity > 0 && quantity < 101) {
     localStorage.setItem(
       JSON.stringify({ id: id, color: color }),
-      JSON.stringify(new Number(quantity))
+      JSON.stringify(Math.floor(new Number(quantity)))
     );
   } else {
     alert(
