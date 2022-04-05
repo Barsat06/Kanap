@@ -1,6 +1,8 @@
+//Récupération de l'id du produit
 let params = new URLSearchParams(location.search);
 let id = params.get("id");
 
+//Récupération et affichage des données du produit
 fetch("http://localhost:3000/api/products/" + id)
   .then((res) => {
     if (res.ok) {
@@ -39,6 +41,7 @@ fetch("http://localhost:3000/api/products/" + id)
 
 const addToCart = document.getElementById("addToCart");
 
+//Ajout d'un article au panier
 addToCart.addEventListener("click", () => {
   const color = document.getElementById("colors").value;
   const quantity = document.getElementById("quantity").value;

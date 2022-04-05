@@ -1,3 +1,4 @@
+//Récupération et affichage de l'ensemble des Kanap
 fetch("http://localhost:3000/api/products")
   .then((res) => {
     if (res.ok) {

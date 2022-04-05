@@ -1,5 +1,7 @@
 //Récupération et affichage de l'orderId
-const orderId = localStorage.getItem("orderId");
+let params = new URLSearchParams(location.search);
+let orderId = params.get("orderId");
+
 document.getElementById("orderId").innerText = orderId;
 
 localStorage.clear();

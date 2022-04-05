@@ -31,6 +31,8 @@ function calcQuantityPrice() {
   if (totalPrice === 0) {
     domUpdate(0, 0);
   }
+
+  emptyCart();
 }
 
 //Modification des valeur de prix et de quantité affichées
@@ -93,7 +95,7 @@ for (let i = 0; i < localStorage.length; i++) {
 
       //Changement du nombre de Kanap
       article.querySelector("input").addEventListener("change", (e) => {
-        value = document.querySelector("input").value;
+        value = article.querySelector("input").value;
 
         if (value > 0 && value < 101) {
           localStorage.setItem(key, Math.floor(value));
@@ -110,11 +112,13 @@ for (let i = 0; i < localStorage.length; i++) {
 calcQuantityPrice();
 
 //Vérification de la présence de Kanap dans le panier
-if (localStorage.length === 0) {
-  const cart = document.getElementById("cart__items");
-  cart.innerHTML = `<div class="cart__empty">
-  <p>Votre panier est vide !</p>
-  </div>`;
+function emptyCart() {
+  if (localStorage.length === 0) {
+    const cart = document.getElementById("cart__items");
+    cart.innerHTML = `<div class="cart__empty">
+        <p>Votre panier est vide !</p>
+        </div>`;
+  }
 }
 
 //Vérification du formulaire de commande
@@ -200,7 +204,6 @@ email.addEventListener("blur", (e) => {
   }
 });
 
-
 //Fonction de vérification du panier
 function validateCart() {
   if (localStorage.length === 0) {
@@ -259,8 +262,7 @@ order.addEventListener("click", (e) => {
       })
       .then((data) => {
         localStorage.clear();
-        localStorage.setItem("orderId", data.orderId);
-        window.location.href = "confirmation.html";
+        window.location.href = "confirmation.html?orderId=" + data.orderId;
       });
   } else {
     return;
