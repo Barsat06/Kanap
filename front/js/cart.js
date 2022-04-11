@@ -124,7 +124,7 @@ function emptyCart() {
 //Vérification du formulaire de commande
 //Regex
 const nameRegex =
-  /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+/^[a-zA-ZéèîïÉÈÎÏ][a-zA-Zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zA-Zéèêàçîï]+)?$/;
 const addressRegex = /^[a-zA-Z0-9\s,.'-]{3,}$/;
 const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
